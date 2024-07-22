@@ -33,34 +33,40 @@ namespace RGLUnityPlugin
         INTERNAL_EXCEPTION = 500,
     };
 
-    public enum RGLField : Int32
-    {
-        UNKNOWN = -1,
-        XYZ_VEC3_F32 = 1,
-        INTENSITY_F32,
-        IS_HIT_I32,
-        RAY_IDX_U32,
-        ENTITY_ID_I32,
-        DISTANCE_F32,
-        AZIMUTH_F32,
-        ELEVATION_F32,
-        RING_ID_U16,
-        RETURN_TYPE_U8,
-        TIME_STAMP_F64,
-        ABSOLUTE_VELOCITY_VEC3_F32,
-        RELATIVE_VELOCITY_VEC3_F32,
-        RADIAL_SPEED_F32,
-        POWER_F32,
-        RCS_F32,
-        NOISE_F32,
-        SNR_F32,
-        // Dummy fields
-        PADDING_8 = 1024,
-        PADDING_16,
-        PADDING_32,
-        // Dynamic fields
-        DYNAMIC_FORMAT = 13842,
-    }
+	public enum RGLField : Int32
+	{
+		XYZ_VEC3_F32 = 1,
+		INTENSITY_F32,
+		INTENSITY_U8,
+		IS_HIT_I32,
+		IS_GROUND_I32,
+		RAY_IDX_U32,
+		ENTITY_ID_I32,
+		DISTANCE_F32,
+		AZIMUTH_F32,
+		ELEVATION_F32,
+		RING_ID_U16,
+		RETURN_TYPE_U8,
+		TIME_STAMP_F64,
+		TIME_STAMP_U32,
+		ABSOLUTE_VELOCITY_VEC3_F32,
+		RELATIVE_VELOCITY_VEC3_F32,
+		RADIAL_SPEED_F32,
+		POWER_F32,
+		RCS_F32,
+		NOISE_F32,
+		SNR_F32,
+		NORMAL_VEC3_F32,
+		INCIDENT_ANGLE_F32,
+		RAY_POSE_MAT3x4_F32,
+		RGL_FIELD_LASER_RETRO_F32,
+		// Dummy fields
+		PADDING_8 = 1024,
+		PADDING_16,
+		PADDING_32,
+		// Dynamic fields
+		DYNAMIC_FORMAT = 13842,
+	}
 
     public enum RGLLogLevel : Int32
     {
