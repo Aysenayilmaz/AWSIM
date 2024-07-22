@@ -150,12 +150,17 @@ Currently, `RglLidarPublisher` implements two ROS2 publishers:
 
 Details on the construction of these formats are available in the `PointCloudFormats` under the following path:
 
-```
-Assets/AWSIM/Scripts/Sensors/LiDAR/PointCloudFormats.cs
-```
+| Preset     | Description            | Fields                             |
+| :--------: | :--------------------- | :---------------------------------- |
+| Pcl 24 | 24-byte point cloud format used by *Autoware* | XYZ_VEC3_F32, PADDING_32, INTENSITY_F32, RING_ID_U16, PADDING_16 |
+| PointXYZIRCEADT | PointXYZIRCEADT format used by *Autoware* | XYZ_VEC3_F32, INTENSITY_U8, RETURN_TYPE_U8, RING_ID_U16, ELEVATION_F32, AZIMUTH_F32, DISTANCE_F32, TIME_STAMP_U32 |
+| Pcl 48 | 48-byte extended version point cloud format used by *Autoware* (legacy) | XYZ_VEC3_F32, PADDING_32, INTENSITY_F32, RING_ID_U16, PADDING_16, AZIMUTH_F32, DISTANCE_F32, RETURN_TYPE_U8, PADDING_8, PADDING_16, PADDING_32, TIME_STAMP_F64 |
+| ML Instance Segmentation | Machine learning format for instance/semantic segmentation tasks | XYZ_VEC3_F32, ENTITY_ID_I32, INTENSITY_F32 |
+| Radar Smart Micro | Format used in Radar Smart Micro | XYZ_VEC3_F32, RADIAL_SPEED_F32, POWER_F32, RCS_F32, NOISE_F32, SNR_F32 |
+| Custom | Empty format that allows the user to define its fieldsets |  |
 
-!!! note "*rosPCL48* format"
-    For a better understanding of the *rosPCL48* format, we encourage you to familiarize yourself with the point cloud pre-processing process in *Autoware*, which is described [here](https://autowarefoundation.github.io/autoware-documentation/latest/design/autoware-architecture/sensing/data-types/point-cloud/#channel).
+!!! note "*PointXYZIRCEADT* format"
+    For a better understanding of the *PointXYZIRCEADT* format, we encourage you to familiarize yourself with the point cloud pre-processing process in *Autoware*, which is described [here](https://autowarefoundation.github.io/autoware-documentation/latest/design/autoware-architecture/sensing/data-types/point-cloud/#point-cloud-fields).
 
 #### Elements configurable from the editor level
 - `Pcl 24 Topic` - the *ROS2* topic on which the [`PointCloud2`][pointcloud2] message is published<br>(default: `"lidar/pointcloud"`)
@@ -172,7 +177,7 @@ Assets/AWSIM/Scripts/Sensors/LiDAR/PointCloudFormats.cs
 |         Category          | Topic                  | Message type                             | `frame_id` |
 | :-----------------------: | :--------------------- | :--------------------------------------- | :--------: |
 | PointCloud 24-byte format | `/lidar/pointcloud`    | [`sensor_msgs/PointCloud2`][pointcloud2] |  `world`   |
-| PointCloud 48-byte format | `/lidar/pointcloud_ex` | [`sensor_msgs/PointCloud2`][pointcloud2] |  `world`   |
+| PointXYZIRCEADT format    | `/lidar/pointcloud_ex` | [`sensor_msgs/PointCloud2`][pointcloud2] |  `world`   |
 
 ## Point Cloud Visualization (script)
 ![script_visualization](script_visualization.png)

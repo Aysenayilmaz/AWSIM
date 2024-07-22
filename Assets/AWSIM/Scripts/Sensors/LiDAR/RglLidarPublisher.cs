@@ -103,8 +103,17 @@ namespace AWSIM
         {
             if (!publishPCL24 && !publishPCL48 && !publishInstanceId && !publishRadar)
             {
-                Debug.LogWarning("All lidar message formats are disabled. Nothing to publish!");
-            }
+                topic = "lidar/pointcloud",
+                publish = true,
+                fieldsPreset = PointCloudFormat.Pcl24,
+            },
+            new PointCloud2Publisher()
+            {
+                topic = "lidar/pointcloud_ex",
+                publish = true,
+                fieldsPreset = PointCloudFormat.PointXYZIRCEADT,
+            },
+        };
 
             MonoBehaviour sensor = null;
             // Check if LiDAR is attached
